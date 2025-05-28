@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLab Campus - University Coding Lab & Test Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .page-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+        .cover {
+            height: 10in;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #6366F1, #3B82F6);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            color: #3B82F6;
+            border-bottom: 2px solid #3B82F6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature-card {
+            border-left: 4px solid #3B82F6;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        .db-table {
+            border: 1px solid #e5e7eb;
+            margin-bottom: 1rem;
+        }
+        .db-table-header {
+            background-color: #f3f4f6;
+            font-weight: bold;
+        }
+        .db-table-row:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .workflow-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .workflow-arrow {
+            margin: 0 0.5rem;
+            color: #6366F1;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        .timeline-marker {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #3B82F6;
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            border-left: 2px solid #e5e7eb;
+            padding-left: 1rem;
+            padding-bottom: 1rem;
+        }
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        .toc-link {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+        .toc-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="page-container bg-white shadow-lg">
+        <!-- Cover Page -->
+        <div class="cover p-10 text-center">
+            <h1 class="text-5xl font-bold mb-6">CodeLab Campus</h1>
+            <h2 class="text-3xl font-semibold mb-10">University Coding Lab & Online Test Platform</h2>
+            <div class="mb-10">
+                <div class="text-xl font-medium">Hackathon Project Documentation</div>
+                <div class="text-lg mt-2">World's Largest Hackathon presented by Bolt</div>
+            </div>
+            <div class="mt-16">
+                <div class="text-xl">Presented by</div>
+                <div class="text-2xl font-semibold mt-2">Mohan Reddy</div>
+                <div class="text-lg mt-6">May 2025</div>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="section" id="toc">
+            <h2 class="section-title text-2xl font-bold">Table of Contents</h2>
+            <div class="toc-item">
+                <a href="#overview" class="toc-link">1. Project Overview</a>
+            </div>
+            <div class="toc-item">
+                <a href="#problem" class="toc-link">2. Problem Statement</a>
+            </div>
+            <div class="toc-item">
+                <a href="#solution" class="toc-link">3. Solution</a>
+            </div>
+            <div class="toc-item">
+                <a href="#features" class="toc-link">4. Key Features</a>
+            </div>
+            <div class="toc-item">
+                <a href="#architecture" class="toc-link">5. System Architecture</a>
+            </div>
+            <div class="toc-item">
+                <a href="#database" class="toc-link">6. Database Design</a>
+            </div>
+            <div class="toc-item">
+                <a href="#workflows" class="toc-link">7. User Workflows</a>
+            </div>
+            <div class="toc-item">
+                <a href="#implementation" class="toc-link">8. Implementation Plan</a>
+            </div>
+            <div class="toc-item">
+                <a href="#future" class="toc-link">9. Future Enhancements</a>
+            </div>
+            <div class="toc-item">
+                <a href="#summary" class="toc-link">10. Summary</a>
+            </div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="section" id="overview">
+            <h2 class="section-title text-2xl font-bold">1. Project Overview</h2>
+            <p class="mb-4">
+                CodeLab Campus is an innovative web-based platform designed specifically for universities and colleges to enhance programming education. 
+                It bridges the gap between theoretical classroom learning and practical programming skills by providing a structured, hands-on environment 
+                for students to practice, test, and improve their coding abilities.
+            </p>
+            <p>
+                Built with Bolt.new for the World's Largest Hackathon, this platform aims to transform how programming is taught 
+                in educational institutions by giving faculty the tools to create customized coding exercises, track student progress, 
+                and conduct online coding assessments.
+            </p>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="section" id="problem">
+            <h2 class="section-title text-2xl font-bold">2. Problem Statement</h2>
+            <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                <h3 class="font-bold text-lg text-red-800 mb-2">Current Challenges in Programming Education</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Universities often lack dedicated platforms for practical programming exercises</li>
+                    <li>Faculty share programming problems as static PDFs or via learning management systems not designed for code</li>
+                    <li>Students have limited options for integrated coding practice that aligns with their specific curriculum</li>
+                    <li>No unified way to track student progress across programming assignments</li>
+                    <li>Limited options for conducting online programming tests with automatic evaluation</li>
+                    <li>Disconnect between theoretical lectures and hands-on programming practice</li>
+                </ul>
+            </div>
+            <p>
+                These challenges lead to a fragmented learning experience where students struggle to apply theoretical knowledge 
+                in practical scenarios, and faculty lack visibility into student progress and areas of difficulty.
+            </p>
+        </div>
+
+        <!-- Solution -->
+        <div class="section" id="solution">
+            <h2 class="section-title text-2xl font-bold">3. Solution</h2>
+            <p class="mb-4">
+                CodeLab Campus solves these problems by providing a comprehensive platform with three integrated components:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-blue-800 mb-2">
+                        <i class="fas fa-code mr-2"></i>Coding Lab Portal
+                    </h3>
+                    <p>A centralized repository where faculty can create and assign programming problems while students can practice, submit, and receive feedback.</p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-green-800 mb-2">
+                        <i class="fas fa-chart-line mr-2"></i>Progress Tracking
+                    </h3>
+                    <p>Detailed analytics that show student performance by course, programming language, and assignment, enabling targeted support.</p>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-purple-800 mb-2">
+                        <i class="fas fa-tasks mr-2"></i>Online Test Module
+                    </h3>
+                    <p>Secure environment for timed programming assessments with optional proctoring features and automatic grading.</p>
+                </div>
+            </div>
+            
+            <p>
+                By integrating these components into a single, user-friendly platform, CodeLab Campus creates a continuous feedback loop 
+                between theoretical instruction and practical application, enhancing the overall learning experience.
+            </p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="section" id="features">
+            <h2 class="section-title text-2xl font-bold">4. Key Features</h2>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">
+                <i class="fas fa-user-graduate mr-2"></i>Student Features
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="feature-card">
+                    <h4 class="font-semibold">Course-Specific Labs</h4>
+                    <p>Access programming exercises organized by course and language</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">In-Browser Code Editor</h4>
+                    <p>Write, compile, and test code directly in the platform</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Immediate Feedback</h4>
+                    <p>Run code against test cases for instant validation</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Progress Tracking</h4>
+                    <p>Monitor completion status and scores across all courses</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Online Test Participation</h4>
+                    <p>Take timed programming assessments with secure proctoring options</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Performance Dashboard</h4>
+                    <p>Visualize strengths and areas for improvement</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">
+                <i class="fas fa-chalkboard-teacher mr-2"></i>Faculty Features
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="feature-card">
+                    <h4 class="font-semibold">Lab Creation</h4>
+                    <p>Design programming problems with detailed instructions</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Test Case Management</h4>
+                    <p>Add input/output test cases to verify student solutions</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Course Management</h4>
+                    <p>Organize labs by course, topic, or programming language</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Student Performance Analytics</h4>
+                    <p>View detailed reports on individual and class-level progress</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Online Test Creation</h4>
+                    <p>Schedule timed assessments with selected problems</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Export Functionality</h4>
+                    <p>Download performance data for academic records</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">
+                <i class="fas fa-user-shield mr-2"></i>Admin Features
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="feature-card">
+                    <h4 class="font-semibold">User Management</h4>
+                    <p>Add and manage students, faculty, and admin accounts</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">College/Department Setup</h4>
+                    <p>Configure organizational structure within the platform</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">System Usage Monitoring</h4>
+                    <p>Track platform usage statistics and performance</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Analytics Dashboard</h4>
+                    <p>View high-level metrics and educational outcomes</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">
+                <i class="fas fa-cogs mr-2"></i>Core System Features
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="feature-card">
+                    <h4 class="font-semibold">Multi-Language Support</h4>
+                    <p>C, C++, Java, Python, and other programming languages</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Automatic Code Evaluation</h4>
+                    <p>Validate submissions against predefined test cases</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Scoring System</h4>
+                    <p>Configurable point system for labs and tests</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold">Online Test Proctoring</h4>
+                    <p>Basic proctoring features for test integrity</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Architecture -->
+        <div class="section" id="architecture">
+            <h2 class="section-title text-2xl font-bold">5. System Architecture</h2>
+            <p class="mb-4">
+                CodeLab Campus is built on a modern, scalable architecture with clear separation of concerns:
+            </p>
+            
+            <div class="bg-gray-100 p-6 rounded-lg mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-y-4">
+                    <div class="text-center p-4">
+                        <div class="bg-blue-100 p-4 rounded-lg mb-2">
+                            <h3 class="font-bold">Frontend Layer</h3>
+                            <p class="text-sm">User Interface & Interaction</p>
+                        </div>
+                        <p class="text-sm">Bolt.new / React</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-arrow-right text-blue-500 text-2xl hidden md:block mt-12"></i>
+                        <i class="fas fa-arrow-down text-blue-500 text-2xl block md:hidden my-2"></i>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="bg-green-100 p-4 rounded-lg mb-2">
+                            <h3 class="font-bold">Backend Layer</h3>
+                            <p class="text-sm">Business Logic & API</p>
+                        </div>
+                        <p class="text-sm">Bolt.new REST API</p>
+                    </div>
+                    <div class="md:col-span-3 text-center">
+                        <i class="fas fa-arrow-down text-blue-500 text-2xl my-2"></i>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="bg-yellow-100 p-4 rounded-lg mb-2">
+                            <h3 class="font-bold">Database Layer</h3>
+                            <p class="text-sm">Data Storage & Retrieval</p>
+                        </div>
+                        <p class="text-sm">PostgreSQL / MySQL</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-arrows-alt-h text-blue-500 text-2xl mt-12"></i>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="bg-purple-100 p-4 rounded-lg mb-2">
+                            <h3 class="font-bold">External Services</h3>
+                            <p class="text-sm">Code Execution & Auth</p>
+                        </div>
+                        <p class="text-sm">Judge0 API / Firebase Auth</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-3 text-blue-700">Tech Stack Components</h3>
+            <div class="overflow-x-auto mb-6">
+                <table class="min-w-full">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-2 text-left">Component</th>
+                            <th class="px-4 py-2 text-left">Technology</th>
+                            <th class="px-4 py-2 text-left">Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-4 py-2">Frontend</td>
+                            <td class="border px-4 py-2">Bolt.new + React</td>
+                            <td class="border px-4 py-2">User interface, responsive design, interactive components</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border px-4 py-2">Backend</td>
+                            <td class="border px-4 py-2">Bolt.new REST API</td>
+                            <td class="border px-4 py-2">API endpoints, business logic, data processing</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Database</td>
+                            <td class="border px-4 py-2">PostgreSQL / MySQL</td>
+                            <td class="border px-4 py-2">Relational data storage, complex queries, data integrity</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border px-4 py-2">Code Execution</td>
+                            <td class="border px-4 py-2">Judge0 API</td>
+                            <td class="border px-4 py-2">Secure code compilation and execution, test case validation</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Authentication</td>
+                            <td class="border px-4 py-2">Firebase Auth / JWT</td>
+                            <td class="border px-4 py-2">User authentication, role-based access control</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border px-4 py-2">Deployment</td>
+                            <td class="border px-4 py-2">Vercel / Render</td>
+                            <td class="border px-4 py-2">Hosting, continuous deployment, scaling</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-3 text-blue-700">System Integration</h3>
+            <p class="mb-4">
+                The architecture follows a service-oriented approach with clear API boundaries between components. The frontend 
+                communicates with the backend via REST APIs, while the backend interacts with both the database and external services 
+                like the code execution engine.
+            </p>
+            <p>
+                This separation allows for independent scaling of components based on demand, particularly important for the 
+                code execution service which may require additional resources during peak usage periods like online tests.
+            </p>
+        </div>
+
+        <!-- Database Design -->
+        <div class="section" id="database">
+            <h2 class="section-title text-2xl font-bold">6. Database Design</h2>
+            <p class="mb-6">
+                The CodeLab Campus platform uses a relational database structure with the following key tables:
+            </p>
+            
+            <h3 class="text-lg font-semibold mb-3 text-blue-700">users</h3>
+            <div class="overflow-x-auto mb-6">
+                <table class="min-w-full db-table">
+                    <thead>
+                        <tr class="db-table-header">
+                            <th class="px-4 py-2 text-left">Field</th>
+                            <th class="px-4 py-2 text-left">Type</th>
+                            <th class="px-4 py-2 text-left">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">id</td>
+                            <td class="border px-4 py-2">Integer (PK)</td>
+                            <td class="border px-4 py-2">Primary key</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">name</td>
+                            <td class="border px-4 py-2">String</td>
+                            <td class="border px-4 py-2">User's full name</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">email</td>
+                            <td class="border px-4 py-2">String (Unique)</td>
+                            <td class="border px-4 py-2">Email address, used for login</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">password</td>
+                            <td class="border px-4 py-2">String (Hashed)</td>
+                            <td class="border px-4 py-2">Password hash</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">role</td>
+                            <td class="border px-4 py-2">Enum</td>
+                            <td class="border px-4 py-2">student, faculty, or admin</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">college_id</td>
+                            <td class="border px-4 py-2">Integer (FK)</td>
+                            <td class="border px-4 py-2">Reference to colleges table</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 class="text-lg font-semibold mb-3 text-blue-700">courses</h3>
+            <div class="overflow-x-auto mb-6">
+                <table class="min-w-full db-table">
+                    <thead>
+                        <tr class="db-table-header">
+                            <th class="px-4 py-2 text-left">Field</th>
+                            <th class="px-4 py-2 text-left">Type</th>
+                            <th class="px-4 py-2 text-left">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">id</td>
+                            <td class="border px-4 py-2">Integer (PK)</td>
+                            <td class="border px-4 py-2">Primary key</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">name</td>
+                            <td class="border px-4 py-2">String</td>
+                            <td class="border px-4 py-2">Course name</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">description</td>
+                            <td class="border px-4 py-2">Text</td>
+                            <td class="border px-4 py-2">Course description</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">created_by</td>
+                            <td class="border px-4 py-2">Integer (FK)</td>
+                            <td class="border px-4 py-2">Reference to users table (faculty)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 class="text-lg font-semibold mb-3 text-blue-700">labs</h3>
+            <div class="overflow-x-auto mb-6">
+                <table class="min-w-full db-table">
+                    <thead>
+                        <tr class="db-table-header">
+                            <th class="px-4 py-2 text-left">Field</th>
+                            <th class="px-4 py-2 text-left">Type</th>
+                            <th class="px-4 py-2 text-left">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">id</td>
+                            <td class="border px-4 py-2">Integer (PK)</td>
+                            <td class="border px-4 py-2">Primary key</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">title</td>
+                            <td class="border px-4 py-2">String</td>
+                            <td class="border px-4 py-2">Lab title</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">description</td>
+                            <td class="border px-4 py-2">Text</td>
+                            <td class="border px-4 py-2">Problem statement and instructions</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">language</td>
+                            <td class="border px-4 py-2">String</td>
+                            <td class="border px-4 py-2">Programming language (e.g., Java, Python)</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">score</td>
+                            <td class="border px-4 py-2">Integer</td>
+                            <td class="border px-4 py-2">Maximum points for this lab</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">course_id</td>
+                            <td class="border px-4 py-2">Integer (FK)</td>
+                            <td class="border px-4 py-2">Reference to courses table</td>
+                        </tr>
+                        <tr class="db-table-row">
+                            <td class="border px-4 py-2">created_by</td>
+                            <td class="border px-4 py-2">Integer (FK)</td>
+                            <td class="border px-4 py-2">Reference to users table (faculty)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 class="text-lg font-semibold mb-3 text-blue-700">Additional Core Tables</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="font-semibold mb-2">test_cases</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>id (PK)</li>
+                        <li>lab_id (FK to labs)</li>
+                        <li>input (test case input)</li>
+                        <li>expected_output (expected result)</li>
+                        <li>is_hidden (boolean, for test-only cases)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2">submissions</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>id (PK)</li>
+                        <li>user_id (FK to users)</li>
+                        <li>lab_id (FK to labs)</li>
+                        <li>code (submitted solution)</li>
+                        <li>output (execution result)</li>
+                        <li>score (points awarded)</li>
+                        <li>submitted_at (timestamp)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2">progress</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>id (PK)</li>
+                        <li>user_id (FK to users)</li>
+                        <li>course_id (FK to courses)</li>
+                        <li>completed_labs_count (integer)</li>
+                        <li>total_score (cumulative points)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2">tests</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>id (PK)</li>
+                        <li>title (test name)</li>
+                        <li>course_id (FK to courses)</li>
+                        <li>start_time (datetime)</li>
+                        <li>end_time (datetime)</li>
+                        <li>is_proctored (boolean)</li>
+                        <li>created_by (FK to users)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="text-lg font-semibold mb-3 text-blue-700">Relationship Diagram</h3>
+            <div class="bg-gray-100 p-6 rounded-lg mb-4">
+                <p class="text-center mb-3 font-semibold">Entity-Relationship Summary</p>
+                <ul class="space-y-2 text-sm">
+                    <li><span class="font-medium">One Faculty</span> can create <span class="font-medium">Many Courses</span></li>
+                    <li><span class="font-medium">One Course</span> contains <span class="font-medium">Many Labs</span></li>
+                    <li><span class="font-medium">One Lab</span> has <span class="font-medium">Many Test Cases</span></li>
+                    <li><span class="font-medium">One Student</span> makes <span class="font-medium">Many Submissions</span></li>
+                    <li><span class="font-medium">One Course</span> can have <span class="font-medium">Many Tests</span></li>
+                    <li><span class="font-medium">One Test</span> includes <span class="font-medium">Many Labs</span> via test_questions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- User Workflows -->
+        <div class="section" id="workflows">
+            <h2 class="section-title text-2xl font-bold">7. User Workflows</h2>
+            <p class="mb-4">
+                The following diagrams illustrate the key user flows within the CodeLab Campus platform:
+            </p>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Student Workflow</h3>
+            <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Login</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Select Course</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">View Labs</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Select Lab</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Read Problem</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Write Code</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Test & Debug</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Submit Solution</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">View Score</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Track Progress</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">Take Online Tests</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-blue-200 rounded-lg">View Results</span>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Faculty Workflow</h3>
+            <div class="bg-green-50 p-4 rounded-lg mb-6">
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Login</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Create Course</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Add Labs</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Add Test Cases</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Assign Labs to Course</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Set Point Values</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Monitor Submissions</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Create Test</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Review Results</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Export Reports</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Analyze Performance</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-green-200 rounded-lg">Refine Course</span>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Admin Workflow</h3>
+            <div class="bg-purple-50 p-4 rounded-lg mb-6">
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-purple-200 rounded-lg">Login</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-purple-200 rounded-lg">Manage Users</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-purple-200 rounded-lg">Set Roles</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="px-3 py-1 bg-purple-200 rounded-lg">Configure College</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-purple-200 rounded-lg">Monitor System</span>
+                    <span class="workflow-arrow"><i class="fas fa-chevron-right"></i></span>
+                    <span class="px-3 py-1 bg-purple-200 rounded-lg">View Analytics</span>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Online Test Flow</h3>
+            <div class="bg-yellow-50 p-4 rounded-lg">
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li><span class="font-medium">Faculty creates test</span> by selecting labs, setting time limits and enabling proctoring if needed</li>
+                    <li><span class="font-medium">Students see upcoming test</span> on their dashboard with scheduled date and time</li>
+                    <li><span class="font-medium">When test starts</span>, students can access the problems and begin coding</li>
+                    <li><span class="font-medium">Timer counts down</span> showing remaining time</li>
+                    <li><span class="font-medium">Students submit solutions</span> for each problem</li>
+                    <li><span class="font-medium">System auto-evaluates</span> submissions against test cases</li>
+                    <li><span class="font-medium">Test ends</span> when time expires or student submits all solutions</li>
+                    <li><span class="font-medium">Results available</span> to both student and faculty immediately</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Implementation Plan -->
+        <div class="section" id="implementation">
+            <h2 class="section-title text-2xl font-bold">8. Implementation Plan</h2>
+            <p class="mb-6">
+                The implementation of CodeLab Campus will follow this structured approach to ensure successful completion within the hackathon timeframe:
+            </p>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Phase 1: Core Platform (Days 1-10)</h3>
+            <div class="mb-6">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 1-2: Project Setup</h4>
+                        <p>Initialize project with Bolt.new, set up repository, and create basic project structure</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 3-4: Authentication System</h4>
+                        <p>Implement user signup/login and role-based access controls</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 5-7: Core Lab Features</h4>
+                        <p>Create lab management interface, problem editor, and submission system</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 8-10: Code Execution Integration</h4>
+                        <p>Connect to Judge0 API for code execution and test case validation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Phase 2: Extended Features (Days 11-20)</h3>
+            <div class="mb-6">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 11-13: Progress Tracking</h4>
+                        <p>Build score system, progress analytics, and student performance dashboard</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 14-16: Online Test Module</h4>
+                        <p>Implement test creation, scheduling, and auto-evaluation functionality</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 17-18: Admin Dashboard</h4>
+                        <p>Create administrative tools for user management and system monitoring</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 19-20: Faculty Analytics</h4>
+                        <p>Build reporting tools for faculty to analyze student performance</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Phase 3: Refinement (Days 21-30)</h3>
+            <div class="mb-6">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 21-23: UI/UX Enhancement</h4>
+                        <p>Improve user interface, add responsive design, and enhance user experience</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 24-26: Testing & Bug Fixes</h4>
+                        <p>Comprehensive testing across features and resolving identified issues</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 27-28: Documentation</h4>
+                        <p>Create user documentation, API references, and setup guides</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4 class="font-medium">Day 29-30: Final Deployment</h4>
+                        <p>Deploy to production environment, add Bolt.new badge, and prepare for submission</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-2 text-blue-700">Bolt.new Implementation Strategy</h3>
+            <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                <p class="mb-3">
+                    To maximize the hackathon's focus on using Bolt.new, we'll follow these implementation approaches:
+                </p>
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li>Use Bolt.new to generate the initial application structure and core components</li>
+                    <li>Leverage AI-assisted development for complex UI components like the code editor</li>
+                    <li>Generate API endpoints and database models using natural language prompts</li>
+                    <li>Implement authentication flows and role-based access with Bolt.new patterns</li>
+                    <li>Utilize Bolt.new for responsive design and cross-device compatibility</li>
+                    <li>Include the "Built with Bolt.new" badge prominently in the application</li>
+                </ol>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-2 text-blue-700">Key Deliverables</h3>
+            <ul class="list-disc pl-5 space-y-1 mb-4">
+                <li>Fully functional CodeLab Campus web application</li>
+                <li>User documentation for students, faculty, and administrators</li>
+                <li>Demo video showcasing key features and workflows</li>
+                <li>Working deployment with sample courses and labs</li>
+                <li>Project submission on Devpost with required documentation</li>
+            </ul>
+        </div>
+
+        <!-- Future Enhancements -->
+        <div class="section" id="future">
+            <h2 class="section-title text-2xl font-bold">9. Future Enhancements</h2>
+            <p class="mb-6">
+                While the core CodeLab Campus platform will be built during the hackathon, several enhancements could be developed in the future:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2 text-indigo-700">
+                        <i class="fas fa-robot mr-2"></i>AI-Powered Assistance
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Personalized learning paths based on performance</li>
+                        <li>Automated hints and debugging suggestions</li>
+                        <li>Smart problem recommendation based on skill gaps</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-pink-50 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2 text-pink-700">
+                        <i class="fas fa-trophy mr-2"></i>Gamification Elements
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Achievement badges for completing challenges</li>
+                        <li>Leaderboards and competitive elements</li>
+                        <li>Streak tracking and reward systems</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-amber-50 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2 text-amber-700">
+                        <i class="fas fa-users mr-2"></i>Collaboration Features
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Peer code review functionality</li>
+                        <li>Group programming assignments</li>
+                        <li>Discussion forums for problem-solving</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-emerald-50 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2 text-emerald-700">
+                        <i class="fas fa-plug mr-2"></i>Integration Capabilities
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>LMS integration (Canvas, Moodle, etc.)</li>
+                        <li>GitHub/GitLab connectivity for code submission</li>
+                        <li>API access for third-party tools</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-3 text-blue-700">Scalability Roadmap</h3>
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <p class="mb-3">With a successful hackathon implementation, CodeLab Campus could grow into:</p>
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li><span class="font-medium">Departmental Solution</span> - Adopted by individual CS departments</li>
+                    <li><span class="font-medium">Institution-Wide Platform</span> - Expanded across multiple departments</li>
+                    <li><span class="font-medium">Multi-Institution System</span> - Used by multiple universities with shared resources</li>
+                    <li><span class="font-medium">Educational SaaS</span> - Commercial offering for educational institutions globally</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section" id="summary">
+            <h2 class="section-title text-2xl font-bold">10. Summary</h2>
+            <p class="mb-4">
+                CodeLab Campus represents a transformative approach to programming education in universities. By creating a 
+                dedicated platform for coding practice, progress tracking, and assessment, it addresses critical gaps in how
+                programming is currently taught and learned.
+            </p>
+            <p class="mb-4">
+                Built with Bolt.new, this project showcases the power of AI-assisted development to rapidly create
+                complex educational software that can have meaningful impact. The platform's focus on customization allows
+                faculty to tailor the learning experience to their specific curriculum while giving students a structured 
+                path to develop practical coding skills.
+            </p>
+            <p class="mb-6">
+                As a hackathon project, CodeLab Campus demonstrates innovation in educational technology, technical 
+                implementation excellence, and a clear vision for how AI-powered development tools can be used to solve
+                real-world problems in higher education.
+            </p>
+            
+            <div class="bg-blue-100 p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold text-blue-800 mb-3">CodeLab Campus</h3>
+                <p class="italic">"Bridging the gap between theory and practice in programming education"</p>
+                <div class="mt-4">
+                    <p class="font-semibold">Mohan Reddy</p>
+                    <p>World's Largest Hackathon presented by Bolt</p>
+                    <p>May 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
